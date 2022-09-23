@@ -68,7 +68,7 @@ class Store(Storage):
         for k, v in self._items.items():
             self.add_initial_values(k, v)
 
-    def add_store(self, name, count):
+    def add(self, name, count):
         if self.get_free_space() > count:
             super().add(name, count)
             return True
@@ -82,7 +82,7 @@ class Shop(Storage):
         for k, v in self._items.items():
             self.add_initial_values(k, v)
 
-    def add_shop(self, name, count):
+    def add(self, name, count):
         if self.get_unique_items_count() < 5 and self.get_free_space() > count:
             super().add(name, count)
             return True

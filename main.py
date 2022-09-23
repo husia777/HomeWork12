@@ -17,8 +17,7 @@ def main():
     if from_where == 'склад':
         if stor.remove(product, amount):
             stor.remove(product, amount)
-            if shop.add_shop(product, amount):
-                shop.add_shop(product, amount)
+            if shop.add(product, amount):
                 print(f'Курьер забирает {amount} {product} из {from_where}')
                 print(f'Курьер везет {amount} {product} со {from_where} в {to}')
                 print(f'Курьер доставил {amount} {product} в {to}')
@@ -30,18 +29,15 @@ def main():
 
 
     elif from_where == 'магазин':
-        if shop.remove(product, amount):
             shop.remove(product, amount)
-            if stor.add_store(product, amount):
-                stor.add_store(product, amount)
+            if stor.add(product, amount):
+                stor.add(product, amount)
                 print(f'Курьер забирает {amount} {product} из {from_where}')
                 print(f'Курьер везет {amount} {product} со {from_where} в {to}')
                 print(f'Курьер доставил {amount} {product} в {to}')
             else:
                 print('На складе недостаточно места, попобуйте что то другое')
 
-        else:
-            print('Не хватает в  магазине, попробуйте заказать меньше')
 
 
 
