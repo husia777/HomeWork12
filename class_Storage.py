@@ -8,7 +8,12 @@ class Storage(ABC):
         self._capacity = capacity
 
 
-    def add(self, name, count):
+    def add(self, name: str, count:int):
+        """
+        функция добавления продуктов
+        :param name: название продукта
+        :param count: количество продукта
+        """
         if count < self._capacity:
             if self._capacity - count > 0:
                 if name in self._items:
@@ -19,10 +24,20 @@ class Storage(ABC):
                     self._capacity -= count
 
 
-    def add_initial_values(self, name, count):
+    def add_initial_values(self, name: str, count:int):
+        """
+        инициализация входных данных
+        :param name: название продукта
+        :param count: количество продукта
+        """
         self._items[name] = count
         self._capacity -= count
-    def remove(self, name, count):
+    def remove(self, name: str, count:int):
+        """
+        функция удаления продукта
+        :param name: название продукта
+        :param count: количество продукта
+        """
         if name in self._items:
             if self._items[name] >= count:
                 if self._items[name] - count > 0:
