@@ -18,11 +18,10 @@ class Storage(ABC):
                     self._items[name] = count
                     self._capacity -= count
 
+
     def add_initial_values(self, name, count):
         self._items[name] = count
         self._capacity -= count
-
-
     def remove(self, name, count):
         if name in self._items:
             if self._items[name] >= count:
@@ -36,7 +35,7 @@ class Storage(ABC):
                 return False
         else:
             return False
-
+    @property
     def get_free_space(self):
         """
         :return:вернуть количество свободных мест
@@ -44,7 +43,7 @@ class Storage(ABC):
         return self._capacity
 
 
-
+    @property
     def get_items(self):
         """
         :return: возвращает содержание склада в словаре {товар: количество}
@@ -52,6 +51,7 @@ class Storage(ABC):
         for i in self._items:
             print(f'{i}  {self._items[i]}')
 
+    @property
     def get_unique_items_count(self):
         """
         :return: возвращает количество уникальных товаров.
@@ -69,7 +69,7 @@ class Store(Storage):
             self.add_initial_values(k, v)
 
     def add(self, name, count):
-        if self.get_free_space() > count:
+        if self.get_free_space > count:
             super().add(name, count)
             return True
         else:
@@ -83,11 +83,11 @@ class Shop(Storage):
             self.add_initial_values(k, v)
 
     def add(self, name, count):
-        if self.get_unique_items_count() < 5 and self.get_free_space() > count:
+        if self.get_unique_items_count < 5 and self.get_free_space > count:
             super().add(name, count)
             return True
         else:
-            return False
+            return 'Недостаточно места'
 
 
 class Request:
